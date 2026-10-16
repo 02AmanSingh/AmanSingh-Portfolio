@@ -1,139 +1,127 @@
-# 🌐 Aman Singh Interactive Portfolio Website
+# 🌐 Aman Kumar Singh Portfolio Website
 
-A modern, highly interactive, and responsive personal portfolio website built with **React**, **TypeScript**, and **Tailwind CSS** to showcase my technical skills, professional experience, projects, education, and achievements. This portfolio serves as a central hub for recruiters, collaborators, and fellow developers to learn more about my work and career journey.
+A minimal, editorial, and recruiter-focused personal portfolio website built with **React**, **TypeScript**, and **Tailwind CSS**. It showcases my technical support experience, web application troubleshooting skills, and data analytics projects.
 
 ## 🚀 Live Demo
 
-Visit Portfolio: [Aman Singh Portfolio](https://aman-singh-portfolio-40405545564.asia-southeast1.run.app) (Please update with your live deployment URL if different)
+- **Live Application:** [Aman Singh Portfolio](https://aman-singh-portfolio-40405545564.asia-southeast1.run.app)
+- **GitHub Profile:** [github.com/02AmanSingh](https://github.com/02AmanSingh?tab=repositories)
+- **LinkedIn Profile:** [linkedin.com/in/aman-singh-328432202](https://www.linkedin.com/in/aman-singh-328432202/)
 
-## 📌 Project Overview
+---
 
-This portfolio website was designed and developed to highlight:
+## 📌 Professional Positioning
 
-* **Interactive Skills Hub:** Categorized technical skill sets with custom-styled dynamic cards.
-* **Work Experience Timeline:** An elegant interactive journey detailing roles at Infosys, Philip Morris International, Ecom Express, Bellurbis, and more.
-* **Interactive Projects Showcase:** Comprehensive details about key projects, complete with technology tags, bullet highlights, and GitHub links.
-* **Interactive Formal CV / Latex Viewer:** A complete, printable standard latex-style formal CV component that can be copied directly.
-* **Accredited Certifications Grid:** Linked list of verified certifications including Atlassian and ServiceNow.
-* **Interactive Dynamic Clock & Status Badges:** Personalized header showing serving notice period status, standard contact shortcuts, and current system highlights.
+This portfolio is specifically tailored for hiring teams reviewing candidates for:
+* **Data Analyst**
+* **Business Intelligence Analyst**
+* **Junior Business Analyst**
+* **Technical Support Analyst**
+* **Application Support Engineer**
+* **Product Support Engineer**
 
-## ⏱️ Project Timeline
+### Core Headline
+> *"Support the product. Understand the data. Improve the experience."*
 
-Optimized and customized under a modern, performance-oriented layout and architecture, ready for immediate professional inspection.
+---
 
-## 🛠️ Technologies Used
+## 🛠️ Technologies & Design System
 
-### Frontend & Core
-* **React 19**
-* **TypeScript** (High-quality type definitions)
-* **Vite** (Optimized, lightning-fast development engine)
-* **Tailwind CSS** (Modern utility-first styling with high-contrast themes)
-* **Motion / Framer Motion** (Fluid interactive entrance and exit animations)
-* **Lucide React** (Clean SVG vector indicators and icons)
+### Visual Direction
+* **Warm Ivory Background:** Clean, editorial `#FAF8F5` canvas inspired by the clarity of premium technology publications.
+* **Readable Dark Typography:** High contrast stone/charcoal text hierarchy with tabular numerals for data metrics.
+* **Restrained Cobalt Accent:** Refined `#1D4ED8` primary focus color for interactive controls and active indicators.
+* **Zero AI-Slop Discipline:** No artificial loading screens, fake status tickers, or heavy gradients.
 
-### Version Control & Deployment
-* **Git & GitHub**
-* **Vite Production Build Pipeline**
+### Technology Stack
+* **Frontend:** React 19, TypeScript, Vite
+* **Styling:** Tailwind CSS (utility-first, design tokens, responsive breakpoints)
+* **Icons:** Lucide React
+* **Type Safety:** Comprehensive interfaces for case studies, experience records, and skills inventories
 
-## ✨ Features
+---
 
-* **Strict Type Safety:** Handled entire schema configurations utilizing clean TypeScript types.
-* **Responsive Visual Hierarchy:** Fully optimized for ultra-wide desktop views down to small hand-held mobile screens.
-* **One-Click Resume Text Copy:** The LaTeX-formatted resume text can be copied cleanly with a single click.
-* **Interactive Filtering:** Hover animations and interactive tabs to transition between project stacks.
-* **High Contrast Dark Aesthetic:** Visually eye-pleasing slate-colored interface with neon teal accents.
+## 📂 Key Sections
 
-## 📂 Sections Included
+### 1. Hero & Positioning
+* Direct statement of professional value connecting customer support empathy to data-driven insights.
+* Candidate factsheet detailing current role, education, and direct contact options.
+* Quick actions: Explore Projects, View Experience, Contact Me, and View GitHub.
 
-### 👨‍💻 About Me
-A concise introductory header displaying serving notice period, locations (Pune/Pimpri-Chinchwad Area), and an objective focus on MERN stack, data analytics, and IT support paradigms.
+### 2. Professional Experience
+* **Support Analyst SA1 | Verifinity.ai** *(Client/Platform: Netlify)* — 31 August 2026 – Present
+  * Front-line customer engineering, billing and subscription investigation, Chrome DevTools debugging, ticket prioritization, and internal playbook development.
+* **Technical Process Executive | Infosys** — May 2025 – July 2026
+  * Enterprise L2/L3 web application support, ServiceNow incident management, Root Cause Analysis (RCA), UAM/IAM access governance, and SLA compliance.
+* **Data Operator | Kumar Building Facility** *(Client: Ecom Express)* — February 2025 – May 2025
+  * High-volume logistics shipment data accuracy, Handheld Terminal (HST) troubleshooting, and local networking maintenance.
+* **Earlier Experience Drawer:** Collapsible overview covering Philip Morris International, Bellurbis, CompWallah, Oasis Infobyte, and InternPe.
 
-### 🛠️ Interactive Skills Hub
-Showcases expertise cleanly organized into:
-* **Languages:** Java, JavaScript, C, Python
-* **Frontend:** React.js, HTML5, CSS, Bootstrap
-* **Backend:** Node.js, Express.js
-* **Database:** MySQL, MongoDB
-* **Tools:** Git, GitHub, ServiceNow, Azure AD, SAP Basis, Admin.net, IAM Access Management
-* **Concepts:** OOPs, REST APIs, WebSocket, JWT Authentication
+### 3. Data Analytics & Technical Projects
+Featuring deep-dive case studies with full business problem, dataset details, tools used, techniques demonstrated, and key findings:
+* **Customer Behavior Analysis (Python, Pandas, NumPy, Seaborn)**
+  * Exploratory data analysis on customer transactional profiles; RFM behavioral segmentation and correlation analysis to optimize customer retention.
+* **T20 Cricket Best XI Analysis Dashboard (Python, Pandas, Power BI, DAX)**
+  * Ball-by-ball tournament data modeling to evaluate phase-specific KPIs (Powerplay vs. Death Overs) and assemble a statistically balanced 11-player squad.
+* **Rate Limiter Redis (Node.js, Express.js, Redis, TypeScript, NPM)**
+  * Published NPM middleware capable of evaluating traffic under 2ms using in-memory Redis structures to mitigate DDoS and credential-stuffing attacks.
+* **Let's Chat Real-Time Collaboration (React.js, Node.js, Express.js, MongoDB, Socket.io)**
+  * Full-duplex WebSocket messaging application with JWT cookie authentication and optimistic UI updates.
 
-### 💼 Experience Timeline
-Detailed professional records with exact accomplishments:
-* **Technical Process Executive** – *Infosys* (May 2025 - Present)
-* **IT Support Engineer** – *Ecom Express Limited* (Dec 2024 - May 2025)
-* **Information Technology Support Engineer** – *Philip Morris International* (March 2025)
-* **Software Developer Trainee** – *Bellurbis* (June 2024 - November 2024)
-* **Web Development Intern** – *CompWallah* (February 2024 - March 2024)
-* **Android App Developer** – *Oasis Infobyte* (April 2023)
-* **Java Programmer** – *InternPe* (March 2023)
-* **Campus Ambassador** – *Internshala* (February 2023)
+### 4. Categorized Skills Inventory
+* **Data Analytics:** Python, Pandas, NumPy, MySQL, Power BI, Exploratory Data Analysis (EDA), RFM Segmentation, DAX Calculated Measures.
+* **Technical Support:** L2/L3 Incident Management, Root Cause Analysis (RCA), SLA Governance, ServiceNow Administration, UAM/IAM, ITIL Best Practices.
+* **Web Technologies:** JavaScript (ES6+), React.js, HTML5, CSS3, REST APIs, Chrome DevTools Debugging, WebSocket, Node.js, Express.js.
+* **Platforms & Tools:** Netlify, Git & GitHub, Azure Active Directory, SAP Basis, Postman, Microsoft Excel (Pivot Tables, VLOOKUP), Handheld Scanners (HST).
 
-### 🚀 Projects Showcase
-Featured live projects:
-* **Let's Chat (MERN APP):** WebSocket-assisted (Socket.io) high-concurrency chatting application with custom rooms and state caching.
-* **Rate Limiter Redis:** Escalative Express.js middleware library published to NPM utilizing in-memory structures to mitigate automated DDoS traffic inside 2ms.
-* **React Pizza Client Portal:** Full-scale interactive client catalog utilizing the localStorage API to persist shopping carts across tab restarts.
-
-### 🎓 Education & Certifications
-* **Bachelor of Technology in Computer Science Engineering** (CGPA: 8.68, Graduated June 2024) from *Babu Banarasi Das University, Lucknow*.
-* **Verified Certifications Grid:**
+### 5. Certifications & Higher Education
+* **Verified Certifications:**
   * Atlassian IT Service Management (ITSM) Professional Certificate
   * ServiceNow IT Leadership Professional Certificate
   * ServiceNow: Basic Administration
-  * Frontend Developer (React)
+  * Frontend Developer(React)
+* **Higher Education:**
+  * **Bachelor of Technology (B.Tech) in Computer Science & Engineering** (CGPA: 8.68 / 10) from *Babu Banarasi Das University, Lucknow* (Graduated June 2024).
 
-### 📞 Contact
-Directly accessible links to:
-* **LinkedIn:** [linkedin.com/in/aman-singh-328432202](https://www.linkedin.com/in/aman-singh-328432202/)
-* **GitHub:** [github.com/02AmanSingh](https://github.com/02AmanSingh)
-* **Email:** amansingh02001@gmail.com
+### 6. ATS Formal Resume Viewer
+* Single-column, printable formal resume optimized for corporate Applicant Tracking Systems.
+* One-click plain-text clipboard copy and browser PDF printing.
 
-## 📸 Screenshots
+### 7. Direct Contact Hub
+* Direct email (`amansingh02001@gmail.com`) with instant copy feedback.
+* Native email pre-filled message generator.
+* Direct phone, LinkedIn, and GitHub links.
+* Informational Privacy Notice and Terms of Use dialogs.
 
-*Include snapshots of your interactive dark mode portfolio and formal CV views here to elevate your GitHub repository's aesthetics!*
+---
 
-## 🔧 Installation
-
-To run this React & TypeScript portfolio locally:
+## 🔧 Local Development & Building
 
 Clone the repository:
 ```bash
 git clone https://github.com/02AmanSingh/AmanSingh-Portfolio.git
-```
-
-Navigate to the project folder:
-```bash
 cd AmanSingh-Portfolio
 ```
 
-Install standard packages:
+Install dependencies:
 ```bash
 npm install
 ```
 
-Boot up the local dev server:
+Start local dev server:
 ```bash
 npm run dev
 ```
 
-Build for final static deployment (e.g., Netlify, Vercel, or custom server hosting):
+Build for static deployment:
 ```bash
 npm run build
 ```
-
-## 🤝 Contributing
-
-Suggestions and feedback are welcome. Feel free to fork the repository and submit improvements.
-
-## 📄 License
-
-This project is open-source and available under the **MIT License**.
 
 ---
 
 ### Developed By
 
 **Aman Kumar Singh**  
-*Full-Stack Developer | Data Analyst | IT Support Engineer*  
-
-⭐ If you like this project, consider giving it a star on GitHub!
+*Technical Support Analyst · Data Analytics Specialist · Full-Stack Web Developer*  
+[LinkedIn](https://www.linkedin.com/in/aman-singh-328432202/) · [GitHub](https://github.com/02AmanSingh) · [Email](mailto:amansingh02001@gmail.com)

@@ -1,100 +1,73 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import FuturisticBackground from "./components/FuturisticBackground";
-import SplashScreen from "./components/SplashScreen";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import AboutSection from "./components/AboutSection";
 import ExperienceTimeline from "./components/ExperienceTimeline";
+import ProjectsSection from "./components/ProjectsSection";
 import SkillsHub from "./components/SkillsHub";
 import CertificationsEducation from "./components/CertificationsEducation";
-import ProjectsSection from "./components/ProjectsSection";
 import ResumePreview from "./components/ResumePreview";
 import ContactSection from "./components/ContactSection";
+import { ThemeProvider } from "./ThemeContext";
 
-export default function App() {
-  const [showSplash, setShowSplash] = useState(true);
-  const [darkMode, setDarkMode] = useState(true);
-
-  // Smooth scroll configuration or any other global bindings
+function MainApp() {
   useEffect(() => {
-    // Add smooth scrolling to html element programmatically
     document.documentElement.style.scrollBehavior = "smooth";
   }, []);
 
-  const toggleTheme = () => {
-    setDarkMode(!darkMode);
-    // Add or remove .light-theme class to HTML element for selective overrides if needed
-    if (darkMode) {
-      document.documentElement.classList.add("light-theme");
-    } else {
-      document.documentElement.classList.remove("light-theme");
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
-  const notifyNavigateToPrint = () => {
-    // Scroll directly to print section
-    const el = document.getElementById("resume-viewer");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <div className={`relative min-h-screen ${darkMode ? "dark text-white bg-[#08090e]" : "text-slate-800 bg-[#f8fafc]"}`}>
-      
-      {/* Background Layer - Particle Grid Canvas */}
-      <FuturisticBackground />
+    <div className="min-h-screen bg-[#FFFDF2] dark:bg-[#000000] text-black dark:text-[#FFFDF2] selection:bg-blue-600 selection:text-white transition-colors duration-200">
+      {/* 1. Recruiter Top Navigation Bar with Theme Switcher Button */}
+      <Navbar
+        onNavigateToResume={() => scrollToSection("resume-viewer")}
+        onNavigateToContact={() => scrollToSection("contact")}
+      />
 
-      {/* Intro Entrance Animation Layer */}
-      <AnimatePresence>
-        {showSplash && (
-          <SplashScreen onComplete={() => setShowSplash(false)} />
-        )}
-      </AnimatePresence>
+      {/* Main Content Sections */}
+      <main>
+        {/* 2. Hero Section with Intro, Image on Right Column, and CTAs */}
+        <Hero
+          onExploreProjects={() => scrollToSection("projects")}
+          onViewExperience={() => scrollToSection("experience")}
+          onContactClick={() => scrollToSection("contact")}
+        />
 
-      {!showSplash && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="relative min-h-screen flex flex-col justify-between"
-        >
-          {/* Recruiter Navigation Bar */}
-          <Navbar 
-            darkMode={darkMode} 
-            toggleTheme={toggleTheme} 
-            onNavigateToPrint={notifyNavigateToPrint}
-          />
+        {/* 3. Positioning Narrative & 4-Column Impact Metric Strip */}
+        <AboutSection />
 
-          {/* Core Visual Sections Stack */}
-          <main className="flex-grow">
-            {/* 1. Cinematic Hero Header Banner */}
-            <Hero />
+        {/* 4. Professional Experience Timeline (First 2 open, remaining in drop-down) */}
+        <ExperienceTimeline />
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-              {/* 2. Top-3 Metric Panel & About Highlights */}
-              <AboutSection />
+        {/* 5. Data Analytics & Technical Projects (Customer Behavior, T20 Cricket, Rate Limiter) */}
+        <ProjectsSection />
 
-              {/* 3. Interactive Accordion Timeline Column Panels */}
-              <ExperienceTimeline />
+        {/* 6. Skills Inventory (Grouped into Data Analytics, Support, Web, Tools) */}
+        <SkillsHub />
 
-              {/* 4. Filterable Skills Grid Hub */}
-              <SkillsHub />
+        {/* 7. Verified Certifications & Higher Education (Atlassian, ServiceNow, B.Tech CSE) */}
+        <CertificationsEducation />
 
-              {/* 5. Accredited Certifications & Trophy Showcase */}
-              <CertificationsEducation />
+        {/* 8. ATS Formal Resume Viewer with Print & Copy Functions */}
+        <ResumePreview />
 
-              {/* Projects List showcase from GitHub */}
-              <ProjectsSection />
-
-              {/* 6. ATS Premium Printable Resume Canvas */}
-              <ResumePreview />
-
-              {/* 7. Transmission Footer Contact Hub */}
-              <ContactSection />
-            </div>
-          </main>
-        </motion.div>
-      )}
+        {/* 9. Contact Dispatcher, Direct Coordinates & Terms/Privacy */}
+        <ContactSection />
+      </main>
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <MainApp />
+    </ThemeProvider>
   );
 }

@@ -1,153 +1,104 @@
-import { motion } from "motion/react";
-import { Terminal, Cpu, Award, Zap, Shield, ArrowUpRight } from "lucide-react";
 import { resumeData, impactHighlights } from "../data";
 
 export default function AboutSection() {
-  const topThree = impactHighlights.slice(0, 3);
-
   return (
-    <section id="about" className="py-24 relative overflow-hidden px-4">
-      {/* Background decorations */}
-      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-72 h-72 rounded-full bg-blue-500/5 blur-[90px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto space-y-20 relative z-10">
+    <section id="positioning" className="py-20 border-b border-black/10 dark:border-stone-800 bg-[#FFFDF2] dark:bg-[#000000] transition-colors duration-200">
+      <div className="max-w-5xl mx-auto space-y-16 px-4 sm:px-6">
         
-        {/* Metric Highlight Strip - "Top 3 Impact Strip" */}
-        <div className="space-y-6">
-          <div className="text-center">
-            <span className="text-[10px] font-mono tracking-widest text-cyan-400 uppercase bg-cyan-950/40 px-3 py-1 rounded-full border border-cyan-800/20 shadow-[0_0_10px_rgba(34,211,238,0.1)]">
-              KEY METRIC INSIGHTS
-            </span>
-            <h2 className="text-2xl font-bold tracking-tight text-slate-100 font-sans mt-3">
-              Top 3 Professional Impacts
-            </h2>
-            <p className="text-xs text-slate-400 font-mono mt-1">
-              EXTRACTED DIRECTLY FROM ENTERPRISE DEPLOYMENTS
+        {/* Section Header */}
+        <div className="text-left space-y-2">
+          <p className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+            Professional Overview & Impact
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-black dark:text-[#FFFDF2]">
+            Connecting technical troubleshooting to business decisions
+          </h2>
+        </div>
+
+        {/* 4-Column Impact Strip */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {impactHighlights.map((item, index) => (
+            <div
+              key={index}
+              className="p-5 rounded-lg bg-white dark:bg-[#0D0D0D] border border-black/10 dark:border-stone-800 shadow-2xs text-left space-y-2 flex flex-col justify-between"
+            >
+              <div className="space-y-1.5">
+                <span className="text-[11px] font-mono font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+                  0{index + 1}. Focus
+                </span>
+                <h3 className="text-base font-bold text-black dark:text-[#FFFDF2] tracking-tight">
+                  {item.metric}
+                </h3>
+                <p className="text-xs text-stone-700 dark:text-stone-300 leading-relaxed">
+                  {item.context}
+                </p>
+              </div>
+              <div className="pt-3 border-t border-black/5 dark:border-stone-800 text-[11px] text-stone-500 dark:text-stone-400 italic">
+                Verified from operational experience
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Two-Column Deep Dive: Narrative & Recruiter Highlights */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start text-left pt-2">
+          {/* Narrative Column */}
+          <div className="lg:col-span-7 space-y-4 text-stone-800 dark:text-stone-300 leading-relaxed text-sm sm:text-base">
+            <h3 className="text-lg font-bold text-black dark:text-[#FFFDF2]">
+              Why this dual support and analytics background matters
+            </h3>
+            <p>
+              In product operations and customer support, problems rarely exist in isolation. A sudden spike in billing inquiries might point to ambiguous checkout UX; an influx of deployment support tickets often reveals silent network timeout patterns or confusing documentation.
+            </p>
+            <p>
+              Having worked directly in front-line customer engineering at Verifinity.ai (supporting Netlify) and enterprise L2/L3 support at Infosys, I bring hands-on familiarity with the full lifecycle of an issue: from initial customer triage and browser DevTools inspection to logging, root cause analysis (RCA), and collaborating on platform enhancements.
+            </p>
+            <p>
+              At the same time, my analytical work in Python (Pandas, NumPy) and Power BI enables me to move beyond individual tickets to understand aggregate operational trends. I apply data cleaning, cohort segmentation, and metric modeling to turn unstructured operational logs into clear, actionable business intelligence.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-            {topThree.map((item, index) => {
-              const icons = [Shield, Award, Cpu];
-              const Icon = icons[index % icons.length];
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ delay: index * 0.15, duration: 0.5 }}
-                  whileHover={{ y: -6, scale: 1.01 }}
-                  className="relative group p-6 rounded-2xl bg-[#0d111a]/85 border border-white/5 shadow-xl hover:border-blue-500/30 transition-all duration-300 overflow-hidden"
-                >
-                  {/* Glowing background gradient on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-cyan-500/5 opacity-0 group-hover:opacity-100 transition duration-500" />
-                  
-                  {/* Accent border highlight */}
-                  <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-blue-500 to-indigo-600 rounded-l-2xl opacity-70 group-hover:opacity-100" />
+          {/* Quick Recruiter Factsheet Column */}
+          <div className="lg:col-span-5 p-6 rounded-lg bg-[#FAF7EC] dark:bg-[#0D0D0D] border border-black/10 dark:border-stone-800 space-y-5 text-left shadow-2xs">
+            <h4 className="text-xs font-bold text-black dark:text-[#FFFDF2] uppercase tracking-wider pb-2 border-b border-black/10 dark:border-stone-800">
+              Candidate Factsheet
+            </h4>
 
-                  <div className="flex items-start space-x-4 pl-2">
-                    <div className="p-3 bg-blue-950/40 rounded-xl border border-blue-800/30 text-blue-400 group-hover:text-cyan-400 group-hover:scale-110 transition duration-300">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <div className="space-y-1.5 text-left flex-1">
-                      <div className="text-2xl font-black text-slate-100 tracking-tight font-sans">
-                        {item.metric}
-                      </div>
-                      <div className="text-xs text-slate-400 font-mono leading-relaxed">
-                        {item.context}
-                      </div>
-                      <div className="text-[10px] text-slate-500 border-t border-white/5 pt-1.5 mt-1.5 truncate italic font-sans">
-                        "{item.source}"
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Detailed Core Summary Bio */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Text Summary columns */}
-          <div className="lg:col-span-7 space-y-6 text-left">
-            <div className="space-y-2">
-              <span className="text-xs font-mono text-cyan-400 tracking-widest uppercase block">
-                ABOUT ME
-              </span>
-              <h3 className="text-3xl font-black font-sans text-slate-100 tracking-tight">
-                Software Developer & ITSM Engineering professional
-              </h3>
-            </div>
-            
-            <div className="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed tracking-wide font-sans">
-              <p>
-                {resumeData.basics.summary[0]}
-              </p>
-              <p>
-                {resumeData.basics.summary[1]}
-              </p>
-            </div>
-
-            {/* Quick Contact Micro-Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
-                <span className="text-[10px] text-slate-400 font-mono uppercase">L2/L3 APPLICATION CODES</span>
-                <span className="text-xs text-slate-200 block truncate">Wix, Zoho, SAP & MERN integrations</span>
-              </div>
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
-                <span className="text-[10px] text-slate-400 font-mono uppercase">NMP SHELLS & AGENTS</span>
-                <span className="text-xs text-slate-200 block truncate">Chrome Extensions & Python Chatbots</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Interactive terminal concept visualization box */}
-          <div className="lg:col-span-5 h-[340px] relative rounded-2xl bg-[#090b10] border border-white/10 p-5 shadow-2xl overflow-hidden group">
-            <div className="absolute top-0 left-0 w-full bg-[#11141e] border-b border-white/10 px-4 py-2.5 flex items-center justify-between">
-              <div className="flex items-center space-x-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
-              </div>
-              <span className="text-[10px] font-mono text-slate-500">aman_profile.sh</span>
-            </div>
-
-            <div className="pt-8 h-full flex flex-col justify-between font-mono text-xs text-slate-300 leading-relaxed text-left">
-              <div className="space-y-4 pt-4 overflow-y-auto max-h-[240px] pr-2 scrollbar-none">
-                <div>
-                  <span className="text-blue-400">$</span> cat profile.json
-                  <pre className="text-green-400 text-[11px] mt-1 bg-black/40 p-3 rounded border border-white/5 leading-normal whitespace-pre-wrap">
-                    {`{
-  "name": "Aman Singh",
-  "education": "BBD University",
-  "location": "Pune, India",
-  "status": "Serving Notice Period"
-}`}
-                  </pre>
-                </div>
-
-                <div>
-                  <span className="text-blue-400">$</span> run skills --assess
-                  <div className="flex flex-wrap gap-1.5 mt-2">
-                    <span className="px-2 py-0.5 rounded bg-blue-950/60 border border-blue-800/30 text-[10px] text-blue-400">ServiceNow</span>
-                    <span className="px-2 py-0.5 rounded bg-blue-950/60 border border-blue-800/30 text-[10px] text-blue-400">ITIL</span>
-                    <span className="px-2 py-0.5 rounded bg-blue-950/60 border border-blue-800/30 text-[10px] text-blue-400">React.js</span>
-                    <span className="px-2 py-0.5 rounded bg-blue-950/60 border border-blue-800/30 text-[10px] text-blue-400">Node.js</span>
-                    <span className="px-2 py-0.5 rounded bg-blue-950/60 border border-blue-800/30 text-[10px] text-blue-400">Java</span>
-                  </div>
-                </div>
-
-                <div className="text-[10px] text-slate-500 italic">
-                  * Compiled perfectly using 60fps canvas engine
-                </div>
+            <div className="space-y-3.5 text-xs text-stone-800 dark:text-stone-300">
+              <div>
+                <span className="text-stone-500 dark:text-stone-400 block mb-0.5">Current Role</span>
+                <span className="font-semibold text-black dark:text-[#FFFDF2]">
+                  Support Analyst SA1 at Verifinity.ai (Client: Netlify)
+                </span>
               </div>
 
-              {/* Bottom stats layout */}
-              <div className="flex justify-between items-center text-[10px] text-slate-500 border-t border-white/5 pt-2">
-                <span>LANG_HIN_ENG</span>
-                <span className="text-cyan-400">ONLINE</span>
+              <div>
+                <span className="text-stone-500 dark:text-stone-400 block mb-0.5">Primary Target Positions</span>
+                <span className="font-semibold text-black dark:text-[#FFFDF2] block">
+                  Data Analyst · BI Analyst · Technical Support Analyst · Product Support Engineer
+                </span>
+              </div>
+
+              <div>
+                <span className="text-stone-500 dark:text-stone-400 block mb-0.5">Education</span>
+                <span className="font-semibold text-black dark:text-[#FFFDF2] block">
+                  B.Tech in Computer Science & Engineering (CGPA: 8.68 / 10)
+                </span>
+                <span className="text-stone-600 dark:text-stone-400">Babu Banarasi Das University, Lucknow</span>
+              </div>
+
+              <div>
+                <span className="text-stone-500 dark:text-stone-400 block mb-0.5">Key Certifications</span>
+                <span className="font-semibold text-black dark:text-[#FFFDF2] block">
+                  Atlassian ITSM · ServiceNow IT Leadership · ServiceNow Administration · React
+                </span>
+              </div>
+
+              <div>
+                <span className="text-stone-500 dark:text-stone-400 block mb-0.5">Location & Availability</span>
+                <span className="font-semibold text-black dark:text-[#FFFDF2] block">
+                  Pune, Maharashtra (Open to remote & relocation)
+                </span>
               </div>
             </div>
           </div>

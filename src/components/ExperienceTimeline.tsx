@@ -1,221 +1,180 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Briefcase, Calendar, MapPin, ChevronDown, ChevronUp, Sparkles, AlertCircle } from "lucide-react";
-import { resumeData, impactHighlights } from "../data";
+import { Calendar, MapPin, ChevronDown, ChevronUp, Briefcase } from "lucide-react";
+import { resumeData } from "../data";
 
 export default function ExperienceTimeline() {
-  // Store expanded state for each experience item. Default index 0, 1 and 2 open.
-  const [expandedRoles, setExpandedRoles] = useState<Record<number, boolean>>({
-    0: true, // Infosys
-    1: true, // Ecom Express
-  });
+  const [showEarlier, setShowEarlier] = useState(false);
 
-  const toggleRole = (idx: number) => {
-    setExpandedRoles((prev) => ({
-      ...prev,
-      [idx]: !prev[idx],
-    }));
-  };
+  // Keep only the first 2 experiences as open
+  const primaryRoles = resumeData.experience.slice(0, 2);
+  // The rest remaining in the drop-down
+  const earlierRoles = resumeData.experience.slice(2);
 
   return (
-    <section id="experience" className="py-24 relative overflow-hidden px-4">
-      {/* Visual cyber mesh background lights */}
-      <div className="absolute top-1/3 right-0 w-80 h-80 rounded-full bg-cyan-500/5 blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/3 left-0 w-80 h-80 rounded-full bg-indigo-500/5 blur-[100px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto space-y-12 relative z-10">
-        {/* Section Heading */}
-        <div className="text-center md:text-left space-y-3">
-          <div className="flex items-center justify-center md:justify-start space-x-2">
-            <span className="text-xs font-mono text-blue-400 tracking-widest uppercase">
-              PROFESSIONAL DEVELOPMENT
-            </span>
-            <Sparkles className="w-3.5 h-3.5 text-blue-400 animate-pulse" />
-          </div>
-          <h2 className="text-3xl md:text-5xl font-sans font-black tracking-tight text-white">
-            Enterprise Journey
+    <section id="experience" className="py-20 border-b border-black/10 dark:border-stone-800 bg-[#FFFDF2] dark:bg-[#000000] transition-colors duration-200">
+      <div className="max-w-5xl mx-auto space-y-12 text-left px-4 sm:px-6">
+        
+        {/* Section Header */}
+        <div className="space-y-2">
+          <p className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+            Career History
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-black dark:text-[#FFFDF2]">
+            Professional Experience & Operational Roles
           </h2>
-          <p className="text-xs text-slate-400 font-mono tracking-wider max-w-xl leading-relaxed">
-            ACCORDION TIMELINE WITH DYNAMIC EXPANSION AND IMPACT BADGES
+          <p className="text-sm text-stone-700 dark:text-stone-300 max-w-2xl leading-relaxed">
+            Hands-on technical support, enterprise incident resolution, web troubleshooting, and operational data management across client environments.
           </p>
         </div>
 
-        {/* Multi-Column Layout: Left Side Experience Timeline, Right Side "Impact Highlights Grid" */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* Main Experience Accordion List: 8 columns */}
-          <div className="lg:col-span-8 space-y-4">
-            {resumeData.experience.map((role, idx) => {
-              const isOpen = !!expandedRoles[idx];
-              
-              return (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.4 }}
-                  className="bg-[#0b0e14]/90 border border-white/5 rounded-2xl overflow-hidden shadow-xl hover:border-blue-500/10 transition-colors"
-                >
-                  {/* Accordion Trigger Header */}
-                  <div
-                    onClick={() => toggleRole(idx)}
-                    className="p-5 sm:p-6 flex items-center justify-between cursor-pointer select-none hover:bg-white/[0.01] transition-colors"
-                  >
-                    <div className="flex items-start space-x-4 text-left">
-                      <div className="p-2.5 rounded-xl bg-blue-950/40 border border-blue-900/40 text-blue-400 mt-1">
-                        <Briefcase className="w-4 h-4" />
-                      </div>
-                      
-                      <div className="space-y-1">
-                        <h4 className="text-base sm:text-lg font-bold text-slate-100 font-sans tracking-tight">
-                          {role.role}
-                        </h4>
-                        
-                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-400 font-mono">
-                          <span className="font-semibold text-cyan-400">{role.company}</span>
-                          <span>•</span>
-                          <span className="flex items-center space-x-1">
-                            <Calendar className="w-3 h-3" />
-                            <span>{role.dates}</span>
-                          </span>
-                          <span className="hidden sm:inline">•</span>
-                          <span className="flex items-center space-x-1">
-                            <MapPin className="w-3 h-3" />
-                            <span>{role.location}</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="p-1 rounded-full bg-white/5 border border-white/10 text-slate-400 group-hover:text-slate-200">
-                      {isOpen ? (
-                        <ChevronDown className="w-4 h-4 transform rotate-180 transition-transform" />
-                      ) : (
-                        <ChevronDown className="w-4 h-4 transition-transform" />
-                      )}
-                    </div>
+        {/* First 2 Core Roles (Always Open) */}
+        <div className="space-y-6">
+          {primaryRoles.map((exp, idx) => (
+            <article
+              key={idx}
+              className="p-6 sm:p-7 rounded-lg bg-white dark:bg-[#0D0D0D] border border-black/10 dark:border-stone-800 shadow-2xs space-y-4 transition-all text-left"
+            >
+              {/* Header: Role, Company, Client, and Dates */}
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 pb-4 border-b border-black/5 dark:border-stone-800">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-lg font-bold text-black dark:text-[#FFFDF2]">
+                      {exp.role}
+                    </h3>
+                    {exp.isCurrent && (
+                      <span className="text-[11px] font-mono font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 px-2 py-0.5 rounded border border-blue-200 dark:border-blue-800">
+                        Current Role
+                      </span>
+                    )}
                   </div>
 
-                  {/* Expandable Bullets Content */}
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25, ease: "easeInOut" }}
-                        className="overflow-hidden"
-                      >
-                        <div className="px-6 pb-6 pt-1 border-t border-white/[0.03] space-y-4 text-left">
-                          
-                          {/* Inner Bullets Listing */}
-                          <ul className="space-y-2.5">
-                            {role.bullets.map((bullet, bIdx) => (
-                              <li
-                                key={bIdx}
-                                className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed flex items-start space-x-2.5"
-                              >
-                                <span className="h-1.5 w-1.5 rounded-full bg-blue-500 mt-2 shrink-0" />
-                                <span>{bullet}</span>
-                              </li>
-                            ))}
-                          </ul>
-
-                          {/* Quick keywords highlighted based on role */}
-                          <div className="flex flex-wrap gap-1.5 pt-2">
-                            {idx === 0 && (
-                              <>
-                                <span className="px-2 py-0.5 rounded bg-blue-950/60 border border-blue-900/40 text-[10px] text-blue-400 font-mono">ServiceNow Custom Scripts</span>
-                                <span className="px-2 py-0.5 rounded bg-emerald-950/60 border border-emerald-900/40 text-[10px] text-emerald-400 font-mono">L2/L3 Web App Support</span>
-                                <span className="px-2 py-0.5 rounded bg-purple-950/60 border border-purple-900/40 text-[10px] text-purple-400 font-mono">Chrome DevTools Debugging</span>
-                                <span className="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-900/40 text-[10px] text-amber-400 font-mono">UI Policies & Client Scripts</span>
-                              </>
-                            )}
-                            {idx === 1 && (
-                              <>
-                                <span className="px-2 py-0.5 rounded bg-cyan-950/60 border border-cyan-900/40 text-[10px] text-cyan-400 font-mono">IT Support Operations</span>
-                                <span className="px-2 py-0.5 rounded bg-blue-950/60 border border-blue-900/40 text-[10px] text-blue-400 font-mono">Enterprise Routers & Switches</span>
-                                <span className="px-2 py-0.5 rounded bg-indigo-950/60 border border-indigo-900/40 text-[10px] text-indigo-400 font-mono">LANs Configuration</span>
-                                <span className="px-2 py-0.5 rounded bg-yellow-950/60 border border-yellow-900/40 text-[10px] text-yellow-400 font-mono">HST Device Synchronization</span>
-                              </>
-                            )}
-                            {idx === 2 && (
-                              <>
-                                <span className="px-2 py-0.5 rounded bg-blue-950/60 border border-blue-900/40 text-[10px] text-blue-400 font-mono">ServiceNow Incident Tracking</span>
-                                <span className="px-2 py-0.5 rounded bg-slate-950/60 border border-slate-900/40 text-[10px] text-slate-400 font-mono">Office 365 / Microsoft Teams</span>
-                                <span className="px-2 py-0.5 rounded bg-pink-950/60 border border-pink-900/40 text-[10px] text-pink-400 font-mono">SAP Software Installation</span>
-                                <span className="px-2 py-0.5 rounded bg-purple-950/60 border border-purple-900/40 text-[10px] text-purple-400 font-mono">GlobalProtect VPN Configs</span>
-                                <span className="px-2 py-0.5 rounded bg-amber-950/60 border border-amber-900/40 text-[10px] text-amber-400 font-mono">Network DNS / Firewall Diagnostics</span>
-                              </>
-                            )}
-                            {idx === 3 && (
-                              <>
-                                <span className="px-2 py-0.5 rounded bg-blue-950/60 border border-blue-900/40 text-[10px] text-blue-400 font-mono">Clean Code & Architecture</span>
-                                <span className="px-2 py-0.5 rounded bg-indigo-950/60 border border-indigo-900/40 text-[10px] text-indigo-400 font-mono">Software Engineering Trainee</span>
-                              </>
-                            )}
-                            {idx >= 4 && (
-                              <span className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] text-slate-400 font-mono">Software Development Skillbuilding</span>
-                            )}
-                          </div>
-
-                        </div>
-                      </motion.div>
+                  <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm font-medium text-stone-800 dark:text-stone-200 mt-1">
+                    <span className="text-black dark:text-[#FFFDF2] font-semibold">{exp.company}</span>
+                    {exp.client && (
+                      <>
+                        <span className="text-stone-300 dark:text-stone-700" aria-hidden="true">·</span>
+                        <span className="text-stone-700 dark:text-stone-300">
+                          Client / Platform: <strong className="text-black dark:text-[#FFFDF2] font-semibold">{exp.client}</strong>
+                        </span>
+                      </>
                     )}
-                  </AnimatePresence>
-                </motion.div>
-              );
-            })}
-          </div>
+                    <span className="text-stone-300 dark:text-stone-700" aria-hidden="true">·</span>
+                    <span className="text-stone-600 dark:text-stone-400 flex items-center gap-1 text-xs">
+                      <MapPin className="w-3 h-3 text-stone-500 dark:text-stone-400" />
+                      <span>{exp.location}</span>
+                    </span>
+                  </div>
+                </div>
 
-          {/* Right Column: Impact Highlights panel - 4 columns */}
-          <div className="lg:col-span-4 space-y-4">
-            <div className="p-6 rounded-2xl bg-[#0d111a]/95 border border-white/5 shadow-xl text-left space-y-4 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 blur-2xl rounded-full" />
-              
-              <div className="flex items-center space-x-2 pb-2 border-b border-white/5">
-                <AlertCircle className="w-4 h-4 text-cyan-400" />
-                <span className="text-xs font-mono font-medium text-slate-200 tracking-wider uppercase">
-                  Impact Feed Panel
-                </span>
+                <div className="text-xs font-mono text-stone-600 dark:text-stone-400 whitespace-nowrap tabular-nums flex items-center gap-1.5 shrink-0">
+                  <Calendar className="w-3.5 h-3.5 text-stone-500 dark:text-stone-400" />
+                  <span>{exp.dates}</span>
+                </div>
               </div>
 
-              <p className="text-xs text-slate-400 leading-relaxed font-sans">
-                Automatically indexed highlights extracted directly from technical actions:
-              </p>
+              {/* Responsibilities Bullets */}
+              <ul className="space-y-2 text-sm text-stone-800 dark:text-stone-300 leading-relaxed">
+                {exp.bullets.map((bullet, bIdx) => (
+                  <li key={bIdx} className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400 mt-2 shrink-0" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
 
-              <div className="space-y-4 pt-1">
-                {impactHighlights.map((hl, hIdx) => (
-                  <div
-                    key={hIdx}
-                    className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/20 transition-colors space-y-1"
+              {/* Highlight Tags */}
+              {exp.highlightTags && exp.highlightTags.length > 0 && (
+                <div className="pt-3 border-t border-black/5 dark:border-stone-800 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-stone-600 dark:text-stone-400">
+                  <span className="font-medium text-stone-700 dark:text-stone-300 text-[11px] uppercase tracking-wider">
+                    Competencies:
+                  </span>
+                  {exp.highlightTags.map((tag, tIdx) => (
+                    <span key={tIdx} className="flex items-center gap-2">
+                      <span className="text-stone-800 dark:text-stone-200 font-mono text-[11px]">{tag}</span>
+                      {tIdx < exp.highlightTags!.length - 1 && (
+                        <span className="text-stone-300 dark:text-stone-700" aria-hidden="true">·</span>
+                      )}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </article>
+          ))}
+        </div>
+
+        {/* Drop-down Section for Remaining Experiences */}
+        {earlierRoles.length > 0 && (
+          <div className="pt-2">
+            <button
+              onClick={() => setShowEarlier(!showEarlier)}
+              className="flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors py-2.5 px-4 rounded-md border border-black/10 dark:border-stone-800 bg-white dark:bg-[#0D0D0D] hover:bg-stone-50 dark:hover:bg-[#151515] shadow-2xs cursor-pointer focus-visible:outline-none"
+            >
+              <Briefcase className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <span>
+                {showEarlier
+                  ? "Hide Additional Experience"
+                  : `View Additional Experience (${earlierRoles.length} roles: Ecom Express & PMI)`}
+              </span>
+              {showEarlier ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            </button>
+
+            {showEarlier && (
+              <div className="mt-5 space-y-4 pl-3 sm:pl-4 border-l-2 border-blue-500/30">
+                {earlierRoles.map((exp, idx) => (
+                  <article
+                    key={idx}
+                    className="p-5 sm:p-6 rounded-lg bg-white dark:bg-[#0D0D0D] border border-black/10 dark:border-stone-800 shadow-2xs space-y-3 text-left"
                   >
-                    <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-mono text-cyan-400 font-bold tracking-wider">
-                        {hl.metric}
-                      </span>
-                      <span className="text-[9px] font-mono text-slate-500 uppercase">
-                        VERIFIED_ACT
+                    <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 pb-3 border-b border-black/5 dark:border-stone-800">
+                      <div>
+                        <h4 className="text-base font-bold text-black dark:text-[#FFFDF2]">
+                          {exp.role}
+                        </h4>
+                        <div className="flex flex-wrap items-center gap-x-2 text-xs text-stone-700 dark:text-stone-300 mt-0.5">
+                          <span className="font-semibold text-black dark:text-[#FFFDF2]">{exp.company}</span>
+                          {exp.client && (
+                            <>
+                              <span className="text-stone-300 dark:text-stone-700">·</span>
+                              <span>Client: <strong className="font-semibold">{exp.client}</strong></span>
+                            </>
+                          )}
+                          <span className="text-stone-300 dark:text-stone-700">·</span>
+                          <span className="text-stone-500 dark:text-stone-400">{exp.location}</span>
+                        </div>
+                      </div>
+
+                      <span className="text-xs font-mono text-stone-600 dark:text-stone-400 whitespace-nowrap tabular-nums">
+                        {exp.dates}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-200 font-sans leading-normal">
-                      {hl.context}
-                    </p>
-                    <p className="text-[10px] text-slate-500 font-mono italic truncate pt-1 border-t border-white/[0.02]">
-                      "{hl.source}"
-                    </p>
-                  </div>
+
+                    <ul className="space-y-1.5 text-xs sm:text-sm text-stone-800 dark:text-stone-300 leading-relaxed">
+                      {exp.bullets.map((bullet, bIdx) => (
+                        <li key={bIdx} className="flex items-start gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-stone-400 dark:bg-stone-600 mt-2 shrink-0" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {exp.highlightTags && (
+                      <div className="pt-2 border-t border-black/5 dark:border-stone-800 flex flex-wrap gap-1.5">
+                        {exp.highlightTags.map((tag, tIdx) => (
+                          <span
+                            key={tIdx}
+                            className="px-2 py-0.5 rounded text-[11px] font-mono text-stone-700 dark:text-stone-300 bg-[#FAF7EC] dark:bg-[#181818] border border-black/5 dark:border-stone-800"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </article>
                 ))}
               </div>
-
-              <div className="bg-blue-950/20 border border-blue-900/30 p-4 rounded-xl text-[11px] font-sans text-blue-400 leading-relaxed">
-                🚀 Currently serving notice period at Infosys and prepared to deploy to new and demanding challenges immediately.
-              </div>
-            </div>
+            )}
           </div>
-
-        </div>
+        )}
 
       </div>
     </section>
